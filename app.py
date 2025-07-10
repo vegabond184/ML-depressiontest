@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 import pandas as pd
 
-load_model = pickle.load(open("depression_logistic_with_85.sav", 'rb'))
+load_model = pickle.load(open("depression_logistic_with_85_new.sav", 'rb'))
 
 app = Flask(__name__)
 
@@ -66,12 +66,17 @@ def depression():
     
 # -----------------------------------------for city----------------------------------------------------------------------------------
 
-    df = pd.read_csv("citydata3.csv")
-    df.drop("id",axis=1)
-    capitalized_string = cityencode.capitalize()
-    df_cleaned = df.drop_duplicates(subset=['name'])
-    rows_with_age_25 = df_cleaned.loc[df_cleaned['name'] == capitalized_string]
-    cityencode = rows_with_age_25["code"].to_list()[0]
+    if cityencode == "Yes":
+        cityencode = 1
+    else:
+        cityencode = 0
+    
+    # df = pd.read_csv("citydata3.csv")
+    # df.drop("id",axis=1)
+    # capitalized_string = cityencode.capitalize()
+    # df_cleaned = df.drop_duplicates(subset=['name'])
+    # rows_with_age_25 = df_cleaned.loc[df_cleaned['name'] == capitalized_string]
+    # cityencode = rows_with_age_25["code"].to_list()[0]
 
 
     
@@ -80,7 +85,7 @@ def depression():
 
 
     input_qu = np.array([[age,academic_pressure,study_satisfaction,work_study,financial,
-                          float(genderencode),float(cityencode),float(suicidalencoded),float(sleep),float(dietary)]])
+                          float(genderencode),float(suicidalencoded),float(sleep),float(dietary),float(cityencode)]])
 
     result = str(load_model.predict(input_qu)[0])
 
