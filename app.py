@@ -12,7 +12,10 @@ app = Flask(__name__)
 @app.route("/nodemcu", methods=["POST","GET"])
 def nodemcu():
     age = request.form.get("age")
-    return age
+    if age == "1":
+        return "hello"
+    else:
+        return "kuch nhi"
 
 
 
