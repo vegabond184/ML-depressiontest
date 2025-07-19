@@ -9,25 +9,11 @@ load_model = pickle.load(open("depression_logistic_with_85_new.sav", 'rb'))
 
 app = Flask(__name__)
 
-@app.route("/nodemcu")
+@app.route("/nodemcu", methods=["POST","GET"])
 def nodemcu():
-    file = open("status.txt","r")
-    status_code = file.read()
-    return status_code
+    age = request.form.get("age")
+    return age
 
-@app.route("/on")
-def on():
-    code = open("status.txt","w")
-    code.write("on")
-    code.close()
-    return "on"
-
-@app.route("/off")
-def off():
-    code_off = open("status.txt","w")
-    code_off.write("off")
-    code_off.close()
-    return "off"
 
 
 @app.route("/depression", methods=["POST"])
