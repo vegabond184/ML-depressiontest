@@ -5,7 +5,19 @@ import pandas as pd
 
 load_model = pickle.load(open("depression_logistic_with_85_new.sav", 'rb'))
 
+status = "off"
+
+
 app = Flask(__name__)
+
+@app.route("/nodemcu", methods=["GET"])
+def nodemcu():
+    return status
+
+@app.route("/webpython", methods=["GET"])
+def nodemcu():
+    status = "on"
+    return status
 
 
 @app.route("/depression", methods=["POST"])
