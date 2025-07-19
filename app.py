@@ -10,7 +10,7 @@ status = "off"
 
 app = Flask(__name__)
 
-@app.route("/nodemcu", methods=["GET"])
+@app.route("/nodemcu")
 def nodemcu():
     return status
 
