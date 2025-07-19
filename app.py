@@ -14,8 +14,8 @@ app = Flask(__name__)
 def nodemcu():
     return status
 
-@app.route("/webpython", methods=["GET"])
-def nodemcu():
+@app.route("/webpython")
+def webpython():
     status = "on"
     return status
 
