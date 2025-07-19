@@ -12,8 +12,8 @@ app = Flask(__name__)
 @app.route("/nodemcu")
 def nodemcu():
     file = open("status.txt","r")
-    file.close()
-    return file.read()
+    status_code = file.read()
+    return status_code
 
 @app.route("/on")
 def on():
