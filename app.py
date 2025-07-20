@@ -5,7 +5,7 @@ import pandas as pd
 
 load_model = pickle.load(open("depression_logistic_with_85_new.sav", 'rb'))
 
-
+data = ["off"]
 
 app = Flask(__name__)
 
@@ -13,9 +13,14 @@ app = Flask(__name__)
 def nodemcu():
     age = request.form.get("age")
     if age == "1":
-        return "hello"
+        data[0] = "on"
+        return str(data[0])
+    if age == "0":
+        data[0] = "off"
+        return str(data[0])
+    
     else:
-        return "kuch nhi"
+       return str(data[0])
 
 
 
