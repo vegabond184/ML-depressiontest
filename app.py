@@ -5,23 +5,9 @@ import pandas as pd
 
 load_model = pickle.load(open("depression_logistic_with_85_new.sav", 'rb'))
 
-data = ["off"]
+
 
 app = Flask(__name__)
-
-@app.route("/nodemcu", methods=["POST","GET"])
-def nodemcu():
-    age = request.form.get("age")
-    if age == "1":
-        data[0] = "on"
-        return str(data[0])
-    if age == "0":
-        data[0] = "off"
-        return str(data[0])
-    
-    else:
-       return str(data[0])
-
 
 
 @app.route("/depression", methods=["POST"])
@@ -87,37 +73,14 @@ def depression():
     else:
         cityencode = 0
     
-    # df = pd.read_csv("citydata3.csv")
-    # df.drop("id",axis=1)
-    # capitalized_string = cityencode.capitalize()
-    # df_cleaned = df.drop_duplicates(subset=['name'])
-    # rows_with_age_25 = df_cleaned.loc[df_cleaned['name'] == capitalized_string]
-    # cityencode = rows_with_age_25["code"].to_list()[0]
-
-
-    
-    
-
-
 
     input_qu = np.array([[age,academic_pressure,study_satisfaction,work_study,financial,
                           float(genderencode),float(suicidalencoded),float(sleep),float(dietary),float(cityencode)]])
 
     result = str(load_model.predict(input_qu)[0])
 
-    # return jsonify({'gender':str(genderencode),
-    #                 'city': str(cityencode),
-    #                 'suicidal': str(suicidalencoded),
-    #                 'sleep': str(sleep),
-    #                 'dite': str(dietary)})
-
-    return jsonify({'prediction': str(result)})
-
-    # if result == "1":
-    #     return jsonify("You Are At Risk Of Depression Please Seek Help ASAP!!!")
     
-    # else:
-    #     return jsonify("You Are Currently Not At Risk Of Depression Take Care...")
+    return jsonify({'prediction': str(result)})
 
 
 
