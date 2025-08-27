@@ -27,5 +27,5 @@ It should **not** be used as a substitute for professional medical advice, diagn
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/student-depression-prediction.git
-cd student-depression-prediction
+git clone https://github.com/vegabond184/ML-depressiontest.git
+cd ML-depressiontest
