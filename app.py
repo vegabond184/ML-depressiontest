@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 import pandas as pd
 
-# load_model = pickle.load(open("depression_logistic_with_85_ne.sav", 'rb'))
+
 load_model = pickle.load(open("ml-deptest.sav", 'rb'))
 
 
