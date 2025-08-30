@@ -1,6 +1,6 @@
-# Student Depression Prediction App 🎓🧠
+# Student Depression Prediction Model 🎓🧠
 
-This is a Machine Learning based application that predicts the likelihood of a student experiencing depression based on certain features (such as lifestyle, academic stress, and other factors).  
+This is a Machine Learning model that predicts the likelihood of a student experiencing depression based on certain features (such as lifestyle, academic stress, and other factors).  
 The goal of this project is to **raise awareness** and provide an accessible tool for educational institutions, researchers, and developers.
 
 ⚠️ **Disclaimer:** This project is intended **only for educational and research purposes**.  
@@ -19,7 +19,8 @@ It should **not** be used as a substitute for professional medical advice, diagn
 ## 🛠️ Tech Stack
 - **Programming Language**: Python  
 - **Frameworks/Libraries**: scikit-learn, pandas, numpy, matplotlib (add any others you used)  
-- **Frontend/UI**: (Flask / Android App In Java)  
+- **Frontend/UI**: (Android App In Java)
+- **Android App**: https://github.com/vegabond184/Student-depression-test-app   
 
 ---
 
