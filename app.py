@@ -3,7 +3,9 @@ import pickle
 import numpy as np
 import pandas as pd
 
-load_model = pickle.load(open("depression_logistic_with_85_new.sav", 'rb'))
+# load_model = pickle.load(open("depression_logistic_with_85_ne.sav", 'rb'))
+load_model = pickle.load(open("ml-deptest.sav", 'rb'))
+
 
 
 
@@ -19,7 +21,7 @@ def depression():
     financial = float(request.form.get("financial"))
 
     genderencode = request.form.get("genderencode")
-    cityencode = request.form.get("cityencode")
+    family_histroy = request.form.get("family_histroy")
     suicidalencoded = request.form.get("suicidalencoded")
     sleep = request.form.get("sleep")
     dietary = request.form.get("dietary")
@@ -68,14 +70,14 @@ def depression():
     
 # -----------------------------------------for city----------------------------------------------------------------------------------
 
-    if cityencode == "Yes":
-        cityencode = 1
+    if family_histroy == "Yes":
+        family_histroy = 1
     else:
-        cityencode = 0
+        family_histroy = 0
     
 
     input_qu = np.array([[age,academic_pressure,study_satisfaction,work_study,financial,
-                          float(genderencode),float(suicidalencoded),float(sleep),float(dietary),float(cityencode)]])
+                          float(genderencode),float(suicidalencoded),float(sleep),float(dietary),float(family_histroy)]])
 
     result = str(load_model.predict(input_qu)[0])
 
