@@ -14,14 +14,12 @@ app = Flask(__name__)
 
 @app.route("/fake")
 def fake():
-    res = os.system("ls")
+    requests.get("https://depressiontest.onrender.com/temp")
     return res
 
 @app.route("/temp")
 def team():
-    while True:
-        time.sleep(5)
-        requests.get("https://depressiontest.onrender.com/fake")
+    requests.get("https://depressiontest.onrender.com/fake")
     return "temp"
 
 
