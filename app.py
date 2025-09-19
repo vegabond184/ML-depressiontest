@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import time
 import requests
+import os
 load_model = pickle.load(open("ml-deptest.sav", 'rb'))
 
 
@@ -13,8 +14,8 @@ app = Flask(__name__)
 
 @app.route("/fake")
 def fake():
-    print("hello my love")
-    return "fake"
+    res = os.system("ls")
+    return res
 
 @app.route("/temp")
 def team():
