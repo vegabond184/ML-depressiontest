@@ -11,6 +11,18 @@ load_model = pickle.load(open("ml-deptest.sav", 'rb'))
 
 app = Flask(__name__)
 
+@app.route("/fake")
+def fake():
+    return "fake"
+
+@app.route("/temp")
+def team():
+    while True:
+        time.sleep(5)
+        requests.get("https://depressiontest.onrender.com/fake")
+    return "temp"
+
+
 
 @app.route("/depression", methods=["POST"])
 def depression():
