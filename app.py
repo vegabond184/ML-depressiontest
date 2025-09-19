@@ -13,6 +13,7 @@ app = Flask(__name__)
 
 @app.route("/fake")
 def fake():
+    print("hello my love")
     return "fake"
 
 @app.route("/temp")
